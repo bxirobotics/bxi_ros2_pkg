@@ -7,5 +7,6 @@
 #include "communication/msg/detail/state_estimator__struct.hpp"
 #include "communication/msg/detail/state_estimator__builder.hpp"
 #include "communication/msg/detail/state_estimator__traits.hpp"
+#include "communication/msg/detail/state_estimator__type_support.hpp"
 
 #endif  // COMMUNICATION__MSG__STATE_ESTIMATOR_HPP_

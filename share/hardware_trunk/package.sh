@@ -78,10 +78,9 @@ _colcon_package_sh_source_script() {
 }
 
 # source sh hooks
-_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/mujoco/hook/cmake_module_path.sh"
-_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/mujoco/hook/cmake_prefix_path.sh"
-_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/mujoco/hook/ld_library_path_lib.sh"
-_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/mujoco/local_setup.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/hardware_trunk/hook/cmake_prefix_path.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/hardware_trunk/hook/ld_library_path_lib.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/hardware_trunk/local_setup.sh"
 
 unset _colcon_package_sh_source_script
 unset COLCON_CURRENT_PREFIX

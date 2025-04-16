@@ -1,4 +1,6 @@
 source;share/mujoco/hook/cmake_module_path.ps1
+source;share/mujoco/hook/cmake_module_path.dsv
+source;share/mujoco/hook/cmake_module_path.sh
 source;share/mujoco/hook/cmake_prefix_path.ps1
 source;share/mujoco/hook/cmake_prefix_path.dsv
 source;share/mujoco/hook/cmake_prefix_path.sh

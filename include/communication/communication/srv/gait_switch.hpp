@@ -7,5 +7,6 @@
 #include "communication/srv/detail/gait_switch__struct.hpp"
 #include "communication/srv/detail/gait_switch__builder.hpp"
 #include "communication/srv/detail/gait_switch__traits.hpp"
+#include "communication/srv/detail/gait_switch__type_support.hpp"
 
 #endif  // COMMUNICATION__SRV__GAIT_SWITCH_HPP_

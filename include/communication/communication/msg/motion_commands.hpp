@@ -7,5 +7,6 @@
 #include "communication/msg/detail/motion_commands__struct.hpp"
 #include "communication/msg/detail/motion_commands__builder.hpp"
 #include "communication/msg/detail/motion_commands__traits.hpp"
+#include "communication/msg/detail/motion_commands__type_support.hpp"
 
 #endif  // COMMUNICATION__MSG__MOTION_COMMANDS_HPP_

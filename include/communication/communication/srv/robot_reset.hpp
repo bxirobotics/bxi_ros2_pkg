@@ -7,5 +7,6 @@
 #include "communication/srv/detail/robot_reset__struct.hpp"
 #include "communication/srv/detail/robot_reset__builder.hpp"
 #include "communication/srv/detail/robot_reset__traits.hpp"
+#include "communication/srv/detail/robot_reset__type_support.hpp"
 
 #endif  // COMMUNICATION__SRV__ROBOT_RESET_HPP_
