@@ -63,6 +63,146 @@ inline void to_flow_style_yaml(
   {
     out << "mode: ";
     rosidl_generator_traits::value_to_yaml(msg.mode, out);
+    out << ", ";
+  }
+
+  // member: btn_1
+  {
+    out << "btn_1: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_1, out);
+    out << ", ";
+  }
+
+  // member: btn_2
+  {
+    out << "btn_2: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_2, out);
+    out << ", ";
+  }
+
+  // member: btn_3
+  {
+    out << "btn_3: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_3, out);
+    out << ", ";
+  }
+
+  // member: btn_4
+  {
+    out << "btn_4: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_4, out);
+    out << ", ";
+  }
+
+  // member: btn_5
+  {
+    out << "btn_5: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_5, out);
+    out << ", ";
+  }
+
+  // member: btn_6
+  {
+    out << "btn_6: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_6, out);
+    out << ", ";
+  }
+
+  // member: btn_7
+  {
+    out << "btn_7: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_7, out);
+    out << ", ";
+  }
+
+  // member: btn_8
+  {
+    out << "btn_8: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_8, out);
+    out << ", ";
+  }
+
+  // member: btn_9
+  {
+    out << "btn_9: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_9, out);
+    out << ", ";
+  }
+
+  // member: btn_10
+  {
+    out << "btn_10: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_10, out);
+    out << ", ";
+  }
+
+  // member: axis_1
+  {
+    out << "axis_1: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_1, out);
+    out << ", ";
+  }
+
+  // member: axis_2
+  {
+    out << "axis_2: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_2, out);
+    out << ", ";
+  }
+
+  // member: axis_3
+  {
+    out << "axis_3: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_3, out);
+    out << ", ";
+  }
+
+  // member: axis_4
+  {
+    out << "axis_4: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_4, out);
+    out << ", ";
+  }
+
+  // member: axis_5
+  {
+    out << "axis_5: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_5, out);
+    out << ", ";
+  }
+
+  // member: axis_6
+  {
+    out << "axis_6: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_6, out);
+    out << ", ";
+  }
+
+  // member: axis_7
+  {
+    out << "axis_7: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_7, out);
+    out << ", ";
+  }
+
+  // member: axis_8
+  {
+    out << "axis_8: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_8, out);
+    out << ", ";
+  }
+
+  // member: axis_9
+  {
+    out << "axis_9: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_9, out);
+    out << ", ";
+  }
+
+  // member: axis_10
+  {
+    out << "axis_10: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_10, out);
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -116,6 +256,206 @@ inline void to_block_style_yaml(
     }
     out << "mode: ";
     rosidl_generator_traits::value_to_yaml(msg.mode, out);
+    out << "\n";
+  }
+
+  // member: btn_1
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_1: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_1, out);
+    out << "\n";
+  }
+
+  // member: btn_2
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_2: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_2, out);
+    out << "\n";
+  }
+
+  // member: btn_3
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_3: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_3, out);
+    out << "\n";
+  }
+
+  // member: btn_4
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_4: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_4, out);
+    out << "\n";
+  }
+
+  // member: btn_5
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_5: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_5, out);
+    out << "\n";
+  }
+
+  // member: btn_6
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_6: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_6, out);
+    out << "\n";
+  }
+
+  // member: btn_7
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_7: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_7, out);
+    out << "\n";
+  }
+
+  // member: btn_8
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_8: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_8, out);
+    out << "\n";
+  }
+
+  // member: btn_9
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_9: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_9, out);
+    out << "\n";
+  }
+
+  // member: btn_10
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "btn_10: ";
+    rosidl_generator_traits::value_to_yaml(msg.btn_10, out);
+    out << "\n";
+  }
+
+  // member: axis_1
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_1: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_1, out);
+    out << "\n";
+  }
+
+  // member: axis_2
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_2: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_2, out);
+    out << "\n";
+  }
+
+  // member: axis_3
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_3: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_3, out);
+    out << "\n";
+  }
+
+  // member: axis_4
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_4: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_4, out);
+    out << "\n";
+  }
+
+  // member: axis_5
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_5: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_5, out);
+    out << "\n";
+  }
+
+  // member: axis_6
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_6: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_6, out);
+    out << "\n";
+  }
+
+  // member: axis_7
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_7: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_7, out);
+    out << "\n";
+  }
+
+  // member: axis_8
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_8: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_8, out);
+    out << "\n";
+  }
+
+  // member: axis_9
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_9: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_9, out);
+    out << "\n";
+  }
+
+  // member: axis_10
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "axis_10: ";
+    rosidl_generator_traits::value_to_yaml(msg.axis_10, out);
     out << "\n";
   }
 }  // NOLINT(readability/fn_size)

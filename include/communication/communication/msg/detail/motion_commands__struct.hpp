@@ -49,6 +49,26 @@ struct MotionCommands_
       this->height_des = 0.0f;
       this->yawdot_des = 0.0f;
       this->mode = 0l;
+      this->btn_1 = 0l;
+      this->btn_2 = 0l;
+      this->btn_3 = 0l;
+      this->btn_4 = 0l;
+      this->btn_5 = 0l;
+      this->btn_6 = 0l;
+      this->btn_7 = 0l;
+      this->btn_8 = 0l;
+      this->btn_9 = 0l;
+      this->btn_10 = 0l;
+      this->axis_1 = 0l;
+      this->axis_2 = 0l;
+      this->axis_3 = 0l;
+      this->axis_4 = 0l;
+      this->axis_5 = 0l;
+      this->axis_6 = 0l;
+      this->axis_7 = 0l;
+      this->axis_8 = 0l;
+      this->axis_9 = 0l;
+      this->axis_10 = 0l;
     }
   }
 
@@ -62,6 +82,26 @@ struct MotionCommands_
       this->height_des = 0.0f;
       this->yawdot_des = 0.0f;
       this->mode = 0l;
+      this->btn_1 = 0l;
+      this->btn_2 = 0l;
+      this->btn_3 = 0l;
+      this->btn_4 = 0l;
+      this->btn_5 = 0l;
+      this->btn_6 = 0l;
+      this->btn_7 = 0l;
+      this->btn_8 = 0l;
+      this->btn_9 = 0l;
+      this->btn_10 = 0l;
+      this->axis_1 = 0l;
+      this->axis_2 = 0l;
+      this->axis_3 = 0l;
+      this->axis_4 = 0l;
+      this->axis_5 = 0l;
+      this->axis_6 = 0l;
+      this->axis_7 = 0l;
+      this->axis_8 = 0l;
+      this->axis_9 = 0l;
+      this->axis_10 = 0l;
     }
   }
 
@@ -81,6 +121,66 @@ struct MotionCommands_
   using _mode_type =
     int32_t;
   _mode_type mode;
+  using _btn_1_type =
+    int32_t;
+  _btn_1_type btn_1;
+  using _btn_2_type =
+    int32_t;
+  _btn_2_type btn_2;
+  using _btn_3_type =
+    int32_t;
+  _btn_3_type btn_3;
+  using _btn_4_type =
+    int32_t;
+  _btn_4_type btn_4;
+  using _btn_5_type =
+    int32_t;
+  _btn_5_type btn_5;
+  using _btn_6_type =
+    int32_t;
+  _btn_6_type btn_6;
+  using _btn_7_type =
+    int32_t;
+  _btn_7_type btn_7;
+  using _btn_8_type =
+    int32_t;
+  _btn_8_type btn_8;
+  using _btn_9_type =
+    int32_t;
+  _btn_9_type btn_9;
+  using _btn_10_type =
+    int32_t;
+  _btn_10_type btn_10;
+  using _axis_1_type =
+    int32_t;
+  _axis_1_type axis_1;
+  using _axis_2_type =
+    int32_t;
+  _axis_2_type axis_2;
+  using _axis_3_type =
+    int32_t;
+  _axis_3_type axis_3;
+  using _axis_4_type =
+    int32_t;
+  _axis_4_type axis_4;
+  using _axis_5_type =
+    int32_t;
+  _axis_5_type axis_5;
+  using _axis_6_type =
+    int32_t;
+  _axis_6_type axis_6;
+  using _axis_7_type =
+    int32_t;
+  _axis_7_type axis_7;
+  using _axis_8_type =
+    int32_t;
+  _axis_8_type axis_8;
+  using _axis_9_type =
+    int32_t;
+  _axis_9_type axis_9;
+  using _axis_10_type =
+    int32_t;
+  _axis_10_type axis_10;
 
   // setters for named parameter idiom
   Type & set__header(
@@ -111,6 +211,126 @@ struct MotionCommands_
     const int32_t & _arg)
   {
     this->mode = _arg;
+    return *this;
+  }
+  Type & set__btn_1(
+    const int32_t & _arg)
+  {
+    this->btn_1 = _arg;
+    return *this;
+  }
+  Type & set__btn_2(
+    const int32_t & _arg)
+  {
+    this->btn_2 = _arg;
+    return *this;
+  }
+  Type & set__btn_3(
+    const int32_t & _arg)
+  {
+    this->btn_3 = _arg;
+    return *this;
+  }
+  Type & set__btn_4(
+    const int32_t & _arg)
+  {
+    this->btn_4 = _arg;
+    return *this;
+  }
+  Type & set__btn_5(
+    const int32_t & _arg)
+  {
+    this->btn_5 = _arg;
+    return *this;
+  }
+  Type & set__btn_6(
+    const int32_t & _arg)
+  {
+    this->btn_6 = _arg;
+    return *this;
+  }
+  Type & set__btn_7(
+    const int32_t & _arg)
+  {
+    this->btn_7 = _arg;
+    return *this;
+  }
+  Type & set__btn_8(
+    const int32_t & _arg)
+  {
+    this->btn_8 = _arg;
+    return *this;
+  }
+  Type & set__btn_9(
+    const int32_t & _arg)
+  {
+    this->btn_9 = _arg;
+    return *this;
+  }
+  Type & set__btn_10(
+    const int32_t & _arg)
+  {
+    this->btn_10 = _arg;
+    return *this;
+  }
+  Type & set__axis_1(
+    const int32_t & _arg)
+  {
+    this->axis_1 = _arg;
+    return *this;
+  }
+  Type & set__axis_2(
+    const int32_t & _arg)
+  {
+    this->axis_2 = _arg;
+    return *this;
+  }
+  Type & set__axis_3(
+    const int32_t & _arg)
+  {
+    this->axis_3 = _arg;
+    return *this;
+  }
+  Type & set__axis_4(
+    const int32_t & _arg)
+  {
+    this->axis_4 = _arg;
+    return *this;
+  }
+  Type & set__axis_5(
+    const int32_t & _arg)
+  {
+    this->axis_5 = _arg;
+    return *this;
+  }
+  Type & set__axis_6(
+    const int32_t & _arg)
+  {
+    this->axis_6 = _arg;
+    return *this;
+  }
+  Type & set__axis_7(
+    const int32_t & _arg)
+  {
+    this->axis_7 = _arg;
+    return *this;
+  }
+  Type & set__axis_8(
+    const int32_t & _arg)
+  {
+    this->axis_8 = _arg;
+    return *this;
+  }
+  Type & set__axis_9(
+    const int32_t & _arg)
+  {
+    this->axis_9 = _arg;
+    return *this;
+  }
+  Type & set__axis_10(
+    const int32_t & _arg)
+  {
+    this->axis_10 = _arg;
     return *this;
   }
 
@@ -169,6 +389,66 @@ struct MotionCommands_
       return false;
     }
     if (this->mode != other.mode) {
+      return false;
+    }
+    if (this->btn_1 != other.btn_1) {
+      return false;
+    }
+    if (this->btn_2 != other.btn_2) {
+      return false;
+    }
+    if (this->btn_3 != other.btn_3) {
+      return false;
+    }
+    if (this->btn_4 != other.btn_4) {
+      return false;
+    }
+    if (this->btn_5 != other.btn_5) {
+      return false;
+    }
+    if (this->btn_6 != other.btn_6) {
+      return false;
+    }
+    if (this->btn_7 != other.btn_7) {
+      return false;
+    }
+    if (this->btn_8 != other.btn_8) {
+      return false;
+    }
+    if (this->btn_9 != other.btn_9) {
+      return false;
+    }
+    if (this->btn_10 != other.btn_10) {
+      return false;
+    }
+    if (this->axis_1 != other.axis_1) {
+      return false;
+    }
+    if (this->axis_2 != other.axis_2) {
+      return false;
+    }
+    if (this->axis_3 != other.axis_3) {
+      return false;
+    }
+    if (this->axis_4 != other.axis_4) {
+      return false;
+    }
+    if (this->axis_5 != other.axis_5) {
+      return false;
+    }
+    if (this->axis_6 != other.axis_6) {
+      return false;
+    }
+    if (this->axis_7 != other.axis_7) {
+      return false;
+    }
+    if (this->axis_8 != other.axis_8) {
+      return false;
+    }
+    if (this->axis_9 != other.axis_9) {
+      return false;
+    }
+    if (this->axis_10 != other.axis_10) {
       return false;
     }
     return true;

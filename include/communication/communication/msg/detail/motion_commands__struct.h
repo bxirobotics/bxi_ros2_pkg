@@ -31,6 +31,26 @@ typedef struct communication__msg__MotionCommands
   float height_des;
   float yawdot_des;
   int32_t mode;
+  int32_t btn_1;
+  int32_t btn_2;
+  int32_t btn_3;
+  int32_t btn_4;
+  int32_t btn_5;
+  int32_t btn_6;
+  int32_t btn_7;
+  int32_t btn_8;
+  int32_t btn_9;
+  int32_t btn_10;
+  int32_t axis_1;
+  int32_t axis_2;
+  int32_t axis_3;
+  int32_t axis_4;
+  int32_t axis_5;
+  int32_t axis_6;
+  int32_t axis_7;
+  int32_t axis_8;
+  int32_t axis_9;
+  int32_t axis_10;
 } communication__msg__MotionCommands;
 
 // Struct for a sequence of communication__msg__MotionCommands.

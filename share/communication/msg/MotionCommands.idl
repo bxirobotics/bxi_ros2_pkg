@@ -17,6 +17,46 @@ module communication {
       float yawdot_des;
 
       int32 mode;
+
+      int32 btn_1;
+
+      int32 btn_2;
+
+      int32 btn_3;
+
+      int32 btn_4;
+
+      int32 btn_5;
+
+      int32 btn_6;
+
+      int32 btn_7;
+
+      int32 btn_8;
+
+      int32 btn_9;
+
+      int32 btn_10;
+
+      int32 axis_1;
+
+      int32 axis_2;
+
+      int32 axis_3;
+
+      int32 axis_4;
+
+      int32 axis_5;
+
+      int32 axis_6;
+
+      int32 axis_7;
+
+      int32 axis_8;
+
+      int32 axis_9;
+
+      int32 axis_10;
     };
   };
 };

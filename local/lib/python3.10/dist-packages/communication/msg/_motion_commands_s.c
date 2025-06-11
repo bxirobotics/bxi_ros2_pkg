@@ -107,6 +107,186 @@ bool communication__msg__motion_commands__convert_from_py(PyObject * _pymsg, voi
     ros_message->mode = (int32_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
+  {  // btn_1
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_1");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_1 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_2
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_2");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_2 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_3
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_3");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_3 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_4
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_4");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_4 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_5
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_5");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_5 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_6
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_6");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_6 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_7
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_7");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_7 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_8
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_8");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_8 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_9
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_9");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_9 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // btn_10
+    PyObject * field = PyObject_GetAttrString(_pymsg, "btn_10");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->btn_10 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_1
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_1");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_1 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_2
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_2");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_2 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_3
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_3");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_3 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_4
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_4");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_4 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_5
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_5");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_5 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_6
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_6");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_6 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_7
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_7");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_7 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_8
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_8");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_8 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_9
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_9");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_9 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
+  {  // axis_10
+    PyObject * field = PyObject_GetAttrString(_pymsg, "axis_10");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->axis_10 = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -184,6 +364,226 @@ PyObject * communication__msg__motion_commands__convert_to_py(void * raw_ros_mes
     field = PyLong_FromLong(ros_message->mode);
     {
       int rc = PyObject_SetAttrString(_pymessage, "mode", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_1
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_1);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_1", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_2
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_2);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_2", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_3
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_3);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_3", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_4
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_4);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_4", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_5
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_5);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_5", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_6
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_6);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_6", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_7
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_7);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_7", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_8
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_8);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_8", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_9
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_9);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_9", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // btn_10
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->btn_10);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "btn_10", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_1
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_1);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_1", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_2
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_2);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_2", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_3
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_3);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_3", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_4
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_4);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_4", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_5
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_5);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_5", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_6
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_6);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_6", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_7
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_7);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_7", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_8
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_8);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_8", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_9
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_9);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_9", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // axis_10
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->axis_10);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "axis_10", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

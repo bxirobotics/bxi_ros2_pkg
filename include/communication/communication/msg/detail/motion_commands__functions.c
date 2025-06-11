@@ -36,6 +36,26 @@ communication__msg__MotionCommands__init(communication__msg__MotionCommands * ms
   // height_des
   // yawdot_des
   // mode
+  // btn_1
+  // btn_2
+  // btn_3
+  // btn_4
+  // btn_5
+  // btn_6
+  // btn_7
+  // btn_8
+  // btn_9
+  // btn_10
+  // axis_1
+  // axis_2
+  // axis_3
+  // axis_4
+  // axis_5
+  // axis_6
+  // axis_7
+  // axis_8
+  // axis_9
+  // axis_10
   return true;
 }
 
@@ -52,6 +72,26 @@ communication__msg__MotionCommands__fini(communication__msg__MotionCommands * ms
   // height_des
   // yawdot_des
   // mode
+  // btn_1
+  // btn_2
+  // btn_3
+  // btn_4
+  // btn_5
+  // btn_6
+  // btn_7
+  // btn_8
+  // btn_9
+  // btn_10
+  // axis_1
+  // axis_2
+  // axis_3
+  // axis_4
+  // axis_5
+  // axis_6
+  // axis_7
+  // axis_8
+  // axis_9
+  // axis_10
 }
 
 bool
@@ -84,6 +124,86 @@ communication__msg__MotionCommands__are_equal(const communication__msg__MotionCo
   if (lhs->mode != rhs->mode) {
     return false;
   }
+  // btn_1
+  if (lhs->btn_1 != rhs->btn_1) {
+    return false;
+  }
+  // btn_2
+  if (lhs->btn_2 != rhs->btn_2) {
+    return false;
+  }
+  // btn_3
+  if (lhs->btn_3 != rhs->btn_3) {
+    return false;
+  }
+  // btn_4
+  if (lhs->btn_4 != rhs->btn_4) {
+    return false;
+  }
+  // btn_5
+  if (lhs->btn_5 != rhs->btn_5) {
+    return false;
+  }
+  // btn_6
+  if (lhs->btn_6 != rhs->btn_6) {
+    return false;
+  }
+  // btn_7
+  if (lhs->btn_7 != rhs->btn_7) {
+    return false;
+  }
+  // btn_8
+  if (lhs->btn_8 != rhs->btn_8) {
+    return false;
+  }
+  // btn_9
+  if (lhs->btn_9 != rhs->btn_9) {
+    return false;
+  }
+  // btn_10
+  if (lhs->btn_10 != rhs->btn_10) {
+    return false;
+  }
+  // axis_1
+  if (lhs->axis_1 != rhs->axis_1) {
+    return false;
+  }
+  // axis_2
+  if (lhs->axis_2 != rhs->axis_2) {
+    return false;
+  }
+  // axis_3
+  if (lhs->axis_3 != rhs->axis_3) {
+    return false;
+  }
+  // axis_4
+  if (lhs->axis_4 != rhs->axis_4) {
+    return false;
+  }
+  // axis_5
+  if (lhs->axis_5 != rhs->axis_5) {
+    return false;
+  }
+  // axis_6
+  if (lhs->axis_6 != rhs->axis_6) {
+    return false;
+  }
+  // axis_7
+  if (lhs->axis_7 != rhs->axis_7) {
+    return false;
+  }
+  // axis_8
+  if (lhs->axis_8 != rhs->axis_8) {
+    return false;
+  }
+  // axis_9
+  if (lhs->axis_9 != rhs->axis_9) {
+    return false;
+  }
+  // axis_10
+  if (lhs->axis_10 != rhs->axis_10) {
+    return false;
+  }
   return true;
 }
 
@@ -113,6 +233,46 @@ communication__msg__MotionCommands__copy(
   output->yawdot_des = input->yawdot_des;
   // mode
   output->mode = input->mode;
+  // btn_1
+  output->btn_1 = input->btn_1;
+  // btn_2
+  output->btn_2 = input->btn_2;
+  // btn_3
+  output->btn_3 = input->btn_3;
+  // btn_4
+  output->btn_4 = input->btn_4;
+  // btn_5
+  output->btn_5 = input->btn_5;
+  // btn_6
+  output->btn_6 = input->btn_6;
+  // btn_7
+  output->btn_7 = input->btn_7;
+  // btn_8
+  output->btn_8 = input->btn_8;
+  // btn_9
+  output->btn_9 = input->btn_9;
+  // btn_10
+  output->btn_10 = input->btn_10;
+  // axis_1
+  output->axis_1 = input->axis_1;
+  // axis_2
+  output->axis_2 = input->axis_2;
+  // axis_3
+  output->axis_3 = input->axis_3;
+  // axis_4
+  output->axis_4 = input->axis_4;
+  // axis_5
+  output->axis_5 = input->axis_5;
+  // axis_6
+  output->axis_6 = input->axis_6;
+  // axis_7
+  output->axis_7 = input->axis_7;
+  // axis_8
+  output->axis_8 = input->axis_8;
+  // axis_9
+  output->axis_9 = input->axis_9;
+  // axis_10
+  output->axis_10 = input->axis_10;
   return true;
 }
 
