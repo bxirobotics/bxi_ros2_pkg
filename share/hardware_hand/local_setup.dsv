@@ -1,0 +1,2 @@
+source;share/hardware_hand/environment/ament_prefix_path.sh
+source;share/hardware_hand/environment/path.sh
