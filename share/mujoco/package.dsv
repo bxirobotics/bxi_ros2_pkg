@@ -5,9 +5,6 @@ source;share/mujoco/hook/cmake_prefix_path.sh
 source;share/mujoco/hook/ld_library_path_lib.ps1
 source;share/mujoco/hook/ld_library_path_lib.dsv
 source;share/mujoco/hook/ld_library_path_lib.sh
-source;share/mujoco/hook/pythonpath.ps1
-source;share/mujoco/hook/pythonpath.dsv
-source;share/mujoco/hook/pythonpath.sh
 source;share/mujoco/local_setup.bash
 source;share/mujoco/local_setup.dsv
 source;share/mujoco/local_setup.ps1

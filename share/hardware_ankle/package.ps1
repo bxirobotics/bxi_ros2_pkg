@@ -112,7 +112,6 @@ $env:COLCON_CURRENT_PREFIX=(Get-Item $PSCommandPath).Directory.Parent.Parent.Ful
 
 colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX\share/hardware_ankle/hook/cmake_prefix_path.ps1"
 colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX\share/hardware_ankle/hook/ld_library_path_lib.ps1"
-colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX\share/hardware_ankle/hook/pythonpath.ps1"
 colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX\share/hardware_ankle/local_setup.ps1"
 
 Remove-Item Env:\COLCON_CURRENT_PREFIX
