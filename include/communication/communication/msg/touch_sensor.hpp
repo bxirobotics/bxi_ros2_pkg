@@ -7,5 +7,6 @@
 #include "communication/msg/detail/touch_sensor__struct.hpp"
 #include "communication/msg/detail/touch_sensor__builder.hpp"
 #include "communication/msg/detail/touch_sensor__traits.hpp"
+#include "communication/msg/detail/touch_sensor__type_support.hpp"
 
 #endif  // COMMUNICATION__MSG__TOUCH_SENSOR_HPP_

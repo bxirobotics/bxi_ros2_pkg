@@ -7,5 +7,6 @@
 #include "communication/srv/detail/simulation_reset__struct.hpp"
 #include "communication/srv/detail/simulation_reset__builder.hpp"
 #include "communication/srv/detail/simulation_reset__traits.hpp"
+#include "communication/srv/detail/simulation_reset__type_support.hpp"
 
 #endif  // COMMUNICATION__SRV__SIMULATION_RESET_HPP_

@@ -7,5 +7,6 @@
 #include "communication/msg/detail/actuator_cmds__struct.hpp"
 #include "communication/msg/detail/actuator_cmds__builder.hpp"
 #include "communication/msg/detail/actuator_cmds__traits.hpp"
+#include "communication/msg/detail/actuator_cmds__type_support.hpp"
 
 #endif  // COMMUNICATION__MSG__ACTUATOR_CMDS_HPP_
