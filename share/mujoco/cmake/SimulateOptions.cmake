@@ -15,7 +15,7 @@
 # Global compilation settings
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_C_EXTENSIONS OFF)
@@ -85,23 +85,33 @@ include(MujocoLinkOptions)
 get_mujoco_extra_link_options(EXTRA_LINK_OPTIONS)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT MSVC))
-  set(EXTRA_COMPILE_OPTIONS -Wall -Werror)
+  set(EXTRA_COMPILE_OPTIONS
+      -Werror
+      -Wall
+      -Wpedantic
+      -Wimplicit-fallthrough
+      -Wunused
+      -Wvla
+      -Wno-int-in-bool-context
+      -Wno-sign-compare
+      -Wno-unknown-pragmas
+  )
   if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # TODO: This should add to EXTRA_COMPILE_OPTIONS rather than overwrite it.
-    set(EXTRA_COMPILE_OPTIONS
-        -Wno-int-in-bool-context
-        -Wno-maybe-uninitialized
-        -Wno-sign-compare
-        -Wno-stringop-overflow
-        -Wno-stringop-truncation
+    # Set -Wimplicit-fallthrough=5 to only allow fallthrough annotation via __attribute__.
+    set(EXTRA_COMPILE_OPTIONS ${EXTRA_COMPILE_OPTIONS} -Wimplicit-fallthrough=5
+                              -Wno-maybe-uninitialized
     )
   endif()
 endif()
 
-if(WIN32)
-  add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+if(NOT CMAKE_INTERPROCEDURAL_OPTIMIZATION AND (CMAKE_BUILD_TYPE AND NOT CMAKE_BUILD_TYPE STREQUAL "Debug"))
+  set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 endif()
 
 include(MujocoHarden)
 set(EXTRA_COMPILE_OPTIONS ${EXTRA_COMPILE_OPTIONS} ${MUJOCO_HARDEN_COMPILE_OPTIONS})
 set(EXTRA_LINK_OPTIONS ${EXTRA_LINK_OPTIONS} ${MUJOCO_HARDEN_LINK_OPTIONS})
+
+if(WIN32)
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_DEPRECATE)
+endif()
