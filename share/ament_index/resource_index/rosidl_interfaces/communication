@@ -2,6 +2,8 @@ msg/ActuatorCmds.idl
 msg/ActuatorCmds.msg
 msg/ActuatorStates.idl
 msg/ActuatorStates.msg
+msg/BatteryStates.idl
+msg/BatteryStates.msg
 msg/MotionCommands.idl
 msg/MotionCommands.msg
 msg/StateEstimator.idl
