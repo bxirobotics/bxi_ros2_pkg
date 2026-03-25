@@ -1,0 +1,11 @@
+source;share/bxi_imu/hook/cmake_prefix_path.ps1
+source;share/bxi_imu/hook/cmake_prefix_path.dsv
+source;share/bxi_imu/hook/cmake_prefix_path.sh
+source;share/bxi_imu/hook/ld_library_path_lib.ps1
+source;share/bxi_imu/hook/ld_library_path_lib.dsv
+source;share/bxi_imu/hook/ld_library_path_lib.sh
+source;share/bxi_imu/local_setup.bash
+source;share/bxi_imu/local_setup.dsv
+source;share/bxi_imu/local_setup.ps1
+source;share/bxi_imu/local_setup.sh
+source;share/bxi_imu/local_setup.zsh
