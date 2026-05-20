@@ -1,0 +1,36 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from communication/msg/CANFD.msg
+// generated code does not contain a copyright notice
+
+
+module communication {
+  module msg {
+    typedef uint8 uint8__64[64];
+    @verbatim (language="comment", text=
+      "Mirrors linux/can.h struct canfd_frame." "\n"
+      "canid_t can_id: low bits contain the 11-bit or 29-bit CAN ID, high bits" "\n"
+      "contain CAN_EFF_FLAG, CAN_RTR_FLAG, and CAN_ERR_FLAG.")
+    struct CANFD {
+      uint32 can_id;
+
+      @verbatim (language="comment", text=
+        "Payload length in bytes, valid range: 0..64.")
+      uint8 len;
+
+      @verbatim (language="comment", text=
+        "CAN FD flags: CANFD_BRS, CANFD_ESI, CANFD_FDF.")
+      uint8 flags;
+
+      @verbatim (language="comment", text=
+        "Reserved fields matching struct canfd_frame layout.")
+      uint8 res0;
+
+      uint8 res1;
+
+      @verbatim (language="comment", text=
+        "Fixed-size payload buffer. Only data is valid.")
+      @unit (value="0:len")
+      uint8__64 data;
+    };
+  };
+};

@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from communication/msg/CANFDPacket.msg
+// generated code does not contain a copyright notice
+
+#include "communication/msg/CANFD.idl"
+#include "std_msgs/msg/Header.idl"
+
+module communication {
+  module msg {
+    @verbatim (language="comment", text=
+      "ROS wrapper for a CAN FD frame carried by a physical CAN bus.")
+    struct CANFDPacket {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Physical CAN bus index.")
+      uint8 bus;
+
+      communication::msg::CANFD frame;
+    };
+  };
+};

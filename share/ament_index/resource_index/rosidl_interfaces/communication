@@ -4,6 +4,10 @@ msg/ActuatorStates.idl
 msg/ActuatorStates.msg
 msg/BatteryStates.idl
 msg/BatteryStates.msg
+msg/CANFD.idl
+msg/CANFD.msg
+msg/CANFDPacket.idl
+msg/CANFDPacket.msg
 msg/MotionCommands.idl
 msg/MotionCommands.msg
 msg/StateEstimator.idl

@@ -1,0 +1,2 @@
+source;share/hardware_canfd/environment/ament_prefix_path.sh
+source;share/hardware_canfd/environment/path.sh
