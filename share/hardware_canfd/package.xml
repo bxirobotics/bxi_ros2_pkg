@@ -11,6 +11,7 @@
 
   <depend>rclcpp</depend>
   <depend>communication</depend>
+  <depend>hardware_elf3</depend>
 
   <exec_depend>ros2launch</exec_depend>
 

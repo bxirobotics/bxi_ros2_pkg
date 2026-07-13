@@ -11,12 +11,14 @@ def generate_launch_description():
     return LaunchDescription(
         [
             Node(
-                package="hardware_elf3_head",
-                executable="hardware_elf3_head",
+                package="hardware_elf3",
+                executable="hardware_elf3",
                 name="hardware_elf3_head",
                 output="screen",
                 parameters=[
-                    # {"simulation/model_file": xml_file},
+                    {"hardware_config/imu": True},      #start imu
+                    {"hardware_config/motor_pwr": True}, #motor poweron
+                    {"hardware_config/motor_disable": 0x0}, #motor disable none
                 ],
                 emulate_tty=True,
                 arguments=[("__log_level:=debug")],
