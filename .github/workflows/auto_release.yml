@@ -76,4 +76,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
           source: bxi_ros2_pkg_${{ env.tag_name }}.tar.gz,bxi_ros2_pkg_${{ env.tag_name }}.tar.gz.sha256
-          target: ${{ secrets.DEPLOY_PATH }}
+          target: ${{ secrets.DEPLOY_PATH }}/bxi_ros2_pkg
