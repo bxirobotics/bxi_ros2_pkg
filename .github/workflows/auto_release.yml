@@ -12,7 +12,6 @@ env:
   ROBOT_MODEL: ELF3
   PACKAGE_NAME: bxi_ros2_pkg
   PACKAGE_TARGET_PATH: /opt/bxi/bxi_ros2_pkg
-  DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}/arm64/bxi_ros2_pkg
 
 jobs:
   package-and-release:
@@ -77,4 +76,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
           source: bxi_ros2_pkg_${{ env.tag_name }}.tar.gz,bxi_ros2_pkg_${{ env.tag_name }}.tar.gz.sha256
-          target: ${{ env.DEPLOY_PATH }}
+          target: ${{ secrets.DEPLOY_PATH }}/arm64/bxi_ros2_pkg
