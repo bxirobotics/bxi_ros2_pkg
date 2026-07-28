@@ -17,8 +17,9 @@ def generate_launch_description():
                 output="screen",
                 parameters=[
                     {"hardware_config/imu": True},      #start imu
-                    {"hardware_config/motor_pwr": True}, #motor poweron
+                    {"hardware_config/motor_pwr": True}, #motor power on
                     {"hardware_config/motor_disable": 0x60000000}, #motor disable head
+                    {"hardware_config/parallel_joint": True}, #Converting parallel joints to serial joints
                 ],
                 emulate_tty=True,
                 arguments=[("__log_level:=debug")],
