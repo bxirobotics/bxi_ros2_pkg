@@ -14,6 +14,10 @@ msg/StateEstimator.idl
 msg/StateEstimator.msg
 msg/TouchSensor.idl
 msg/TouchSensor.msg
+srv/ApplyExternalWrench.idl
+srv/ApplyExternalWrench.srv
+srv/ApplyExternalWrench_Request.msg
+srv/ApplyExternalWrench_Response.msg
 srv/GaitSwitch.idl
 srv/GaitSwitch.srv
 srv/GaitSwitch_Request.msg
