@@ -1,0 +1,28 @@
+{
+  "architecture": "arm",
+  "prebuilt": {
+    "commit": "e92b1124547098d9e0de1c6f4e8b030a2a7bf950",
+    "files": {
+      "lib/hardware_elf3/can_test": "89398a8bd8e975472ca7c9fe0210595d026b31b202d824539f9df593b6b341f0",
+      "lib/mujoco/lib/libmujoco.so.3.5.0": "53e9985b59009e6644c8c38f55a85328a91ab5ef179f808c8d2bd4394b41d7e0"
+    }
+  },
+  "sources": {
+    "bxi_pci_drv": {
+      "commit": "714cbbf3e6dafa88e0bc3ccc96f5b3d203562ab1",
+      "dirty": false,
+      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bxi_ros2_pkg_src": {
+      "commit": "8ef0e11266ff8da8b12b87ad1ee57e494d061e01",
+      "dirty": false,
+      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "toolchain": {
+    "compiler_target": "aarch64-linux-gnu",
+    "gcc": "11.4.0",
+    "cmake": "cmake version 3.22.1",
+    "ros": "humble"
+  }
+}

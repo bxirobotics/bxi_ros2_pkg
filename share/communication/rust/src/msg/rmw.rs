@@ -212,6 +212,172 @@ impl rosidl_runtime_rs::RmwMessage for ActuatorStates where Self: Sized {
 
 #[link(name = "communication__rosidl_typesupport_c")]
 extern "C" {
+    fn rosidl_typesupport_c__get_message_type_support_handle__communication__msg__ActuatorStatus() -> *const std::ffi::c_void;
+}
+
+#[link(name = "communication__rosidl_generator_c")]
+extern "C" {
+    fn communication__msg__ActuatorStatus__init(msg: *mut ActuatorStatus) -> bool;
+    fn communication__msg__ActuatorStatus__Sequence__init(seq: *mut rosidl_runtime_rs::Sequence<ActuatorStatus>, size: usize) -> bool;
+    fn communication__msg__ActuatorStatus__Sequence__fini(seq: *mut rosidl_runtime_rs::Sequence<ActuatorStatus>);
+    fn communication__msg__ActuatorStatus__Sequence__copy(in_seq: &rosidl_runtime_rs::Sequence<ActuatorStatus>, out_seq: *mut rosidl_runtime_rs::Sequence<ActuatorStatus>) -> bool;
+}
+
+// Corresponds to communication__msg__ActuatorStatus
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[repr(C)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ActuatorStatus {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub header: std_msgs::msg::rmw::Header,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub name: rosidl_runtime_rs::Sequence<rosidl_runtime_rs::String>,
+
+    /// One status per name; values are defined in communication/actuator_status.hpp.
+    /// 0 OK, 1 DISABLED, 2 FEEDBACK_TIMEOUT, 3 COMMAND_TIMEOUT,
+    /// 4 ERROR_OVER_POSITION, 5 ERROR_OVER_VELOCITY, 6 ERROR_OVER_TORQUE,
+    /// 7 ERROR_SAFE_MODE, 8 CAN_RX_DROP, 9 CAN_TX_ERROR, 10 ERROR_LATCHED,
+    /// 255 ERROR_UNKNOWN. If multiple conditions apply, only the highest priority is sent.
+    pub status: rosidl_runtime_rs::Sequence<u8>,
+
+}
+
+
+
+impl Default for ActuatorStatus {
+  fn default() -> Self {
+    unsafe {
+      let mut msg = std::mem::zeroed();
+      if !communication__msg__ActuatorStatus__init(&mut msg as *mut _) {
+        panic!("Call to communication__msg__ActuatorStatus__init() failed");
+      }
+      msg
+    }
+  }
+}
+
+impl rosidl_runtime_rs::SequenceAlloc for ActuatorStatus {
+  fn sequence_init(seq: &mut rosidl_runtime_rs::Sequence<Self>, size: usize) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__ActuatorStatus__Sequence__init(seq as *mut _, size) }
+  }
+  fn sequence_fini(seq: &mut rosidl_runtime_rs::Sequence<Self>) {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__ActuatorStatus__Sequence__fini(seq as *mut _) }
+  }
+  fn sequence_copy(in_seq: &rosidl_runtime_rs::Sequence<Self>, out_seq: &mut rosidl_runtime_rs::Sequence<Self>) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__ActuatorStatus__Sequence__copy(in_seq, out_seq as *mut _) }
+  }
+}
+
+impl rosidl_runtime_rs::Message for ActuatorStatus {
+  type RmwMsg = Self;
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> { msg_cow }
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self { msg }
+}
+
+impl rosidl_runtime_rs::RmwMessage for ActuatorStatus where Self: Sized {
+  const TYPE_NAME: &'static str = "communication/msg/ActuatorStatus";
+  fn get_type_support() -> *const std::ffi::c_void {
+    // SAFETY: No preconditions for this function.
+    unsafe { rosidl_typesupport_c__get_message_type_support_handle__communication__msg__ActuatorStatus() }
+  }
+}
+
+
+#[link(name = "communication__rosidl_typesupport_c")]
+extern "C" {
+    fn rosidl_typesupport_c__get_message_type_support_handle__communication__msg__DiagnosticEvent() -> *const std::ffi::c_void;
+}
+
+#[link(name = "communication__rosidl_generator_c")]
+extern "C" {
+    fn communication__msg__DiagnosticEvent__init(msg: *mut DiagnosticEvent) -> bool;
+    fn communication__msg__DiagnosticEvent__Sequence__init(seq: *mut rosidl_runtime_rs::Sequence<DiagnosticEvent>, size: usize) -> bool;
+    fn communication__msg__DiagnosticEvent__Sequence__fini(seq: *mut rosidl_runtime_rs::Sequence<DiagnosticEvent>);
+    fn communication__msg__DiagnosticEvent__Sequence__copy(in_seq: &rosidl_runtime_rs::Sequence<DiagnosticEvent>, out_seq: *mut rosidl_runtime_rs::Sequence<DiagnosticEvent>) -> bool;
+}
+
+// Corresponds to communication__msg__DiagnosticEvent
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+
+/// One problem transition. Receiver key: (source, code).
+/// Source scope without a leading/trailing slash or the problem name.
+
+#[repr(C)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct DiagnosticEvent {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub source: rosidl_runtime_rs::String,
+
+    /// Bits 15..14 priority, 13..12 reserved=0, 11..5 type, 4..0 problem.
+    /// Keep the original code on recovery; problem 0 is reserved.
+    pub code: u16,
+
+    /// true: occurred, false: recovered. Unchanged problems are not repeated.
+    pub active: bool,
+
+}
+
+
+
+impl Default for DiagnosticEvent {
+  fn default() -> Self {
+    unsafe {
+      let mut msg = std::mem::zeroed();
+      if !communication__msg__DiagnosticEvent__init(&mut msg as *mut _) {
+        panic!("Call to communication__msg__DiagnosticEvent__init() failed");
+      }
+      msg
+    }
+  }
+}
+
+impl rosidl_runtime_rs::SequenceAlloc for DiagnosticEvent {
+  fn sequence_init(seq: &mut rosidl_runtime_rs::Sequence<Self>, size: usize) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__DiagnosticEvent__Sequence__init(seq as *mut _, size) }
+  }
+  fn sequence_fini(seq: &mut rosidl_runtime_rs::Sequence<Self>) {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__DiagnosticEvent__Sequence__fini(seq as *mut _) }
+  }
+  fn sequence_copy(in_seq: &rosidl_runtime_rs::Sequence<Self>, out_seq: &mut rosidl_runtime_rs::Sequence<Self>) -> bool {
+    // SAFETY: This is safe since the pointer is guaranteed to be valid/initialized.
+    unsafe { communication__msg__DiagnosticEvent__Sequence__copy(in_seq, out_seq as *mut _) }
+  }
+}
+
+impl rosidl_runtime_rs::Message for DiagnosticEvent {
+  type RmwMsg = Self;
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> { msg_cow }
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self { msg }
+}
+
+impl rosidl_runtime_rs::RmwMessage for DiagnosticEvent where Self: Sized {
+  const TYPE_NAME: &'static str = "communication/msg/DiagnosticEvent";
+  fn get_type_support() -> *const std::ffi::c_void {
+    // SAFETY: No preconditions for this function.
+    unsafe { rosidl_typesupport_c__get_message_type_support_handle__communication__msg__DiagnosticEvent() }
+  }
+}
+
+
+#[link(name = "communication__rosidl_typesupport_c")]
+extern "C" {
     fn rosidl_typesupport_c__get_message_type_support_handle__communication__msg__BatteryStates() -> *const std::ffi::c_void;
 }
 

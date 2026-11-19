@@ -227,6 +227,137 @@ impl rosidl_runtime_rs::Message for ActuatorStates {
 }
 
 
+// Corresponds to communication__msg__ActuatorStatus
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ActuatorStatus {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub header: std_msgs::msg::Header,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub name: Vec<std::string::String>,
+
+    /// One status per name; values are defined in communication/actuator_status.hpp.
+    /// 0 OK, 1 DISABLED, 2 FEEDBACK_TIMEOUT, 3 COMMAND_TIMEOUT,
+    /// 4 ERROR_OVER_POSITION, 5 ERROR_OVER_VELOCITY, 6 ERROR_OVER_TORQUE,
+    /// 7 ERROR_SAFE_MODE, 8 CAN_RX_DROP, 9 CAN_TX_ERROR, 10 ERROR_LATCHED,
+    /// 255 ERROR_UNKNOWN. If multiple conditions apply, only the highest priority is sent.
+    pub status: Vec<u8>,
+
+}
+
+
+
+impl Default for ActuatorStatus {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::msg::rmw::ActuatorStatus::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for ActuatorStatus {
+  type RmwMsg = super::msg::rmw::ActuatorStatus;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Owned(msg.header)).into_owned(),
+        name: msg.name
+          .into_iter()
+          .map(|elem| elem.as_str().into())
+          .collect(),
+        status: msg.status.into(),
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
+        name: msg.name
+          .iter()
+          .map(|elem| elem.as_str().into())
+          .collect(),
+        status: msg.status.as_slice().into(),
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      header: std_msgs::msg::Header::from_rmw_message(msg.header),
+      name: msg.name
+          .into_iter()
+          .map(|elem| elem.to_string())
+          .collect(),
+      status: msg.status
+          .into_iter()
+          .collect(),
+    }
+  }
+}
+
+
+// Corresponds to communication__msg__DiagnosticEvent
+/// One problem transition. Receiver key: (source, code).
+/// Source scope without a leading/trailing slash or the problem name.
+
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct DiagnosticEvent {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub source: std::string::String,
+
+    /// Bits 15..14 priority, 13..12 reserved=0, 11..5 type, 4..0 problem.
+    /// Keep the original code on recovery; problem 0 is reserved.
+    pub code: u16,
+
+    /// true: occurred, false: recovered. Unchanged problems are not repeated.
+    pub active: bool,
+
+}
+
+
+
+impl Default for DiagnosticEvent {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::msg::rmw::DiagnosticEvent::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for DiagnosticEvent {
+  type RmwMsg = super::msg::rmw::DiagnosticEvent;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        source: msg.source.as_str().into(),
+        code: msg.code,
+        active: msg.active,
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        source: msg.source.as_str().into(),
+      code: msg.code,
+      active: msg.active,
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      source: msg.source.to_string(),
+      code: msg.code,
+      active: msg.active,
+    }
+  }
+}
+
+
 // Corresponds to communication__msg__BatteryStates
 
 // This struct is not documented.

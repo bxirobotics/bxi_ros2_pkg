@@ -1,0 +1,911 @@
+{
+  "schema_version": 1,
+  "errors": {
+    "0x8021": {
+      "condition": "FPGA_NOT_FOUND",
+      "description": {
+        "zh": "未发现 PCI 10ee:7022",
+        "en": "PCI device 10ee:7022 was not found."
+      },
+      "troubleshooting": {
+        "zh": "检查PCI枚举、板卡供电和连接；仅lspci无法区分断电、接触不良或设备故障。",
+        "en": "Check PCI enumeration, board power and connections; lspci alone cannot identify the underlying cause."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022"
+      ]
+    },
+    "0x8022": {
+      "condition": "HW_INIT_FAILED",
+      "description": {
+        "zh": "初始化、内存分配或电机上电失败",
+        "en": "Hardware initialization, allocation or motor power-on failed."
+      },
+      "troubleshooting": {
+        "zh": "查看硬件节点首个初始化错误，并核对PCI设备及运行权限；不要反复上电试错。",
+        "en": "Read the first hardware initialization error and check the PCI device and process permissions; avoid repeated power cycling."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 node list",
+        "ros2 topic info /hardware/diagnostic_input --verbose"
+      ]
+    },
+    "0x8023": {
+      "condition": "HW_NO_DATA",
+      "description": {
+        "zh": "硬件进程的诊断输入中断",
+        "en": "Hardware diagnostic input has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查硬件节点是否存在及diagnostic_input发布频率，再查看退出或阻塞日志。",
+        "en": "Check that the hardware node exists and diagnostic_input is being published, then inspect exit or blocking logs."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 node list",
+        "ros2 topic info /hardware/diagnostic_input --verbose"
+      ]
+    },
+    "0x8024": {
+      "condition": "RESET_SERVICE_MISSING",
+      "description": {
+        "zh": "robot_reset 服务不存在",
+        "en": "The robot_reset service is unavailable."
+      },
+      "troubleshooting": {
+        "zh": "核对硬件节点和robot_reset服务名称；若修改topic_prefix，检查两端前缀是否一致。",
+        "en": "Check the hardware node and robot_reset service name; if topic_prefix changed, verify both sides use the same prefix."
+      },
+      "commands": [
+        "ros2 service list -t",
+        "ros2 node list"
+      ]
+    },
+    "0x8025": {
+      "condition": "UNKNOWN_HW_ERROR",
+      "description": {
+        "zh": "未识别的底层故障，保留原文",
+        "en": "The hardware reported an unrecognized fault."
+      },
+      "troubleshooting": {
+        "zh": "按source定位原始来源，查看robot_diagnose和硬件日志中的原文，不猜测未知错误含义。",
+        "en": "Use source to locate the origin and read the original robot_diagnose and hardware logs; do not guess the fault meaning."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 node list",
+        "ros2 topic info /hardware/diagnostic_input --verbose"
+      ]
+    },
+    "0x8041": {
+      "condition": "FEEDBACK_TIMEOUT",
+      "description": {
+        "zh": "某个已启用电机反馈超时",
+        "en": "An enabled motor has not provided feedback in time."
+      },
+      "troubleshooting": {
+        "zh": "按source定位关节，检查电机供电、CAN连接与反馈；不要通过屏蔽超时掩盖故障。",
+        "en": "Locate the joint using source and check motor power, CAN wiring and feedback; do not mask the timeout."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8042": {
+      "condition": "COMMAND_TIMEOUT",
+      "description": {
+        "zh": "底层原有的 1 秒指令超时",
+        "en": "The existing one-second motor command timeout was reached."
+      },
+      "troubleshooting": {
+        "zh": "检查example是否运行及actuators_cmds是否持续发布，核对控制线程异常日志。",
+        "en": "Check that example is running and continuously publishing actuators_cmds, and inspect control-thread errors."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuators_cmds --verbose",
+        "ros2 topic echo /hardware/actuators_cmds --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC043": {
+      "condition": "OVER_POSITION",
+      "description": {
+        "zh": "位置超限位",
+        "en": "Joint position exceeded its configured limit."
+      },
+      "troubleshooting": {
+        "zh": "先确保机械安全，核对source关节的实际姿态、零位、反馈和配置限位；排除原因前不要强制复位。",
+        "en": "Secure the mechanism first, then check the affected joint pose, zero calibration, feedback and configured limits; do not force a reset before resolving the cause."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8044": {
+      "condition": "OVER_VELOCITY",
+      "description": {
+        "zh": "速度超限",
+        "en": "Joint velocity exceeded its configured limit."
+      },
+      "troubleshooting": {
+        "zh": "核对关节反馈速度、目标变化和配置上限，检查反馈是否跳变。",
+        "en": "Check joint feedback velocity, target changes and the configured limit, including discontinuities in feedback."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC045": {
+      "condition": "OVER_TORQUE",
+      "description": {
+        "zh": "超扭矩",
+        "en": "Joint torque exceeded its configured limit."
+      },
+      "troubleshooting": {
+        "zh": "先确保机械安全，检查关节负载、卡滞、接触和力矩反馈，再核对已有上限。",
+        "en": "Secure the mechanism first and check joint load, obstruction, contact and torque feedback, then review the existing limit."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC046": {
+      "condition": "SAFE_MODE",
+      "description": {
+        "zh": "进入底层安全模式",
+        "en": "A motor entered the existing safe mode."
+      },
+      "troubleshooting": {
+        "zh": "查看该关节在进入安全模式前的首个错误及指令中断情况，确认原因后按既有流程处理。",
+        "en": "Inspect the first preceding joint fault and any command interruption, then follow the existing recovery procedure after resolving the cause."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC047": {
+      "condition": "ERROR_LATCHED",
+      "description": {
+        "zh": "底层错误锁存",
+        "en": "A hardware or motor protection error remains latched."
+      },
+      "troubleshooting": {
+        "zh": "查看锁存前的故障记录并排除原因；故障不再出现不等于锁存已解除。",
+        "en": "Inspect the fault history before latching and resolve its cause; absence of new faults does not mean the latch has cleared."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8048": {
+      "condition": "MOTOR_ERROR_CODE",
+      "description": {
+        "zh": "电机原始错误码非零",
+        "en": "The motor reported a nonzero raw error code."
+      },
+      "troubleshooting": {
+        "zh": "在robot_diagnose日志中读取该source的原始Error Code，按对应电机厂商协议排查；不要把事件码当成电机原始码。",
+        "en": "Read the raw Error Code for this source in robot_diagnose logs and consult the matching motor protocol; the event code is not the raw motor code."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8049": {
+      "condition": "MOTOR_UNDER_VOLTAGE",
+      "description": {
+        "zh": "电机回传欠压",
+        "en": "The motor reported undervoltage."
+      },
+      "troubleshooting": {
+        "zh": "检查电机电源、电缆及带载压降，结合电机原始日志确认；不新增电压阈值。",
+        "en": "Check motor power, cabling and voltage drop under load against the original motor logs; no new voltage threshold is implied."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x804A": {
+      "condition": "MOTOR_OVER_VOLTAGE",
+      "description": {
+        "zh": "电机回传过压",
+        "en": "The motor reported overvoltage."
+      },
+      "troubleshooting": {
+        "zh": "检查电源输出及回馈工况，结合驱动器额定参数和原始故障日志排查。",
+        "en": "Check power-supply output and regenerative operation against driver ratings and original fault logs."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x804B": {
+      "condition": "MOTOR_ENCODER_ERROR",
+      "description": {
+        "zh": "电机回传编码器错误",
+        "en": "The motor reported an encoder fault."
+      },
+      "troubleshooting": {
+        "zh": "检查该关节编码器反馈、连接和驱动器原始码；重新标定前先排除硬件问题。",
+        "en": "Check encoder feedback, connections and the raw driver code for this joint; resolve hardware issues before recalibration."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x804C": {
+      "condition": "MOTOR_OVER_SPEED",
+      "description": {
+        "zh": "电机回传超速",
+        "en": "The motor reported overspeed."
+      },
+      "troubleshooting": {
+        "zh": "核对实际速度、目标指令和驱动器原始错误，检查反馈跳变或机械异常。",
+        "en": "Check actual velocity, target commands and the raw driver error, including feedback discontinuities or mechanical problems."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x804D": {
+      "condition": "MOTOR_ERROR_STATE",
+      "description": {
+        "zh": "电机进入错误状态",
+        "en": "The motor reported an error state."
+      },
+      "troubleshooting": {
+        "zh": "查看对应关节驱动器原始状态和故障码，结合反馈及供电判断，不推测未公开状态位。",
+        "en": "Read the joint driver's raw state and fault code together with feedback and power status; do not infer undocumented bits."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC04E": {
+      "condition": "MOTOR_CONTROL_ERROR",
+      "description": {
+        "zh": "motor_cmd_trans 失败",
+        "en": "motor_cmd_trans failed while preparing a motor command."
+      },
+      "troubleshooting": {
+        "zh": "查看对应关节的底层日志，核对关节名称、命令数据和既有转换参数。",
+        "en": "Inspect the joint's low-level logs and verify joint names, command data and existing conversion parameters."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuators_cmds --verbose",
+        "ros2 topic echo /hardware/actuators_cmds --once --qos-reliability best_effort"
+      ]
+    },
+    "0x804F": {
+      "condition": "FEEDBACK_INVALID",
+      "description": {
+        "zh": "反馈为空、重名、数组不匹配或非有限数",
+        "en": "Motor feedback is empty, duplicated, mismatched or non-finite."
+      },
+      "troubleshooting": {
+        "zh": "检查反馈name与position/velocity/effort长度、重名及NaN/Inf，定位异常发布端。",
+        "en": "Check name and position/velocity/effort lengths, duplicate names and NaN/Inf values, then locate the faulty publisher."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuator_states --verbose",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8050": {
+      "condition": "COMMAND_INVALID",
+      "description": {
+        "zh": "指令格式异常、非有限数或负增益",
+        "en": "Motor commands contain invalid data or negative gains."
+      },
+      "troubleshooting": {
+        "zh": "检查actuators_name与各命令数组长度、重名、NaN/Inf及负kp/kd，定位命令生成位置。",
+        "en": "Check actuators_name and command-array lengths, duplicate names, NaN/Inf and negative kp/kd, then locate the command producer."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuators_cmds --verbose",
+        "ros2 topic echo /hardware/actuators_cmds --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8051": {
+      "condition": "ACTUATOR_NO_DATA",
+      "description": {
+        "zh": "反馈话题中断",
+        "en": "The actuator feedback topic has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查actuator_states发布节点、QoS和硬件日志，区分整个话题中断与单关节反馈超时。",
+        "en": "Check the actuator_states publisher, QoS and hardware logs; distinguish a stopped topic from a single-joint timeout."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuator_states --verbose",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8052": {
+      "condition": "ACTUATOR_COMMAND_NO_DATA",
+      "description": {
+        "zh": "example 指令流中断",
+        "en": "The example actuator command stream has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查example启动和控制线程状态、topic前缀与actuators_cmds发布频率。",
+        "en": "Check example startup, control-thread status, topic prefixes and the actuators_cmds publication rate."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuators_cmds --verbose",
+        "ros2 topic echo /hardware/actuators_cmds --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8053": {
+      "condition": "FEEDBACK_STAMP_ERROR",
+      "description": {
+        "zh": "反馈时间戳缺失、倒退、过期或超前",
+        "en": "Feedback timestamps are missing, reversed, stale or in the future."
+      },
+      "troubleshooting": {
+        "zh": "核对反馈header.stamp、发布端时钟和use_sim_time，检查两端时间源及同步。",
+        "en": "Check feedback header.stamp, the publisher clock and use_sim_time, including time-source consistency and synchronization."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuator_states --verbose",
+        "ros2 topic echo /hardware/actuator_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8054": {
+      "condition": "COMMAND_STAMP_ERROR",
+      "description": {
+        "zh": "指令时间戳异常",
+        "en": "Command timestamps are missing, reversed, stale or in the future."
+      },
+      "troubleshooting": {
+        "zh": "核对指令header.stamp和example时钟，检查use_sim_time与硬件端时间源是否一致。",
+        "en": "Check command header.stamp and the example clock, and verify that use_sim_time and hardware time sources agree."
+      },
+      "commands": [
+        "ros2 topic info /hardware/actuators_cmds --verbose",
+        "ros2 topic echo /hardware/actuators_cmds --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8061": {
+      "condition": "CAN_RX_ERROR",
+      "description": {
+        "zh": "CAN 错误帧",
+        "en": "The CAN interface reported a receive error frame."
+      },
+      "troubleshooting": {
+        "zh": "按source定位CAN总线，查看硬件错误日志并检查供电、终端电阻、接线与波特率；该事件无明确恢复证据时锁存。",
+        "en": "Locate the CAN bus using source, inspect hardware logs and check power, termination, wiring and bitrate; this event stays latched without explicit recovery evidence."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x8062": {
+      "condition": "CAN_TX_ERROR",
+      "description": {
+        "zh": "CAN 发送接口返回失败",
+        "en": "The CAN transmit interface returned a failure."
+      },
+      "troubleshooting": {
+        "zh": "查看对应CAN发送失败日志，检查PCI连接、总线负载及电机连接；不要只凭后续无报错判断恢复。",
+        "en": "Inspect the relevant CAN transmit failure and check PCI connectivity, bus load and motor connections; silence alone is not evidence of recovery."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x8063": {
+      "condition": "CAN_RX_DROP",
+      "description": {
+        "zh": "用户 CAN 接收队列发生丢包",
+        "en": "The user-space CAN receive queue dropped packets."
+      },
+      "troubleshooting": {
+        "zh": "查看接收丢包计数与系统负载，检查消费阻塞和总线数据量；不通过放宽保护阈值处理。",
+        "en": "Inspect receive-drop counters and system load, checking for blocked consumers and excessive bus traffic; do not relax protection thresholds."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x8064": {
+      "condition": "CAN_TX_DROP",
+      "description": {
+        "zh": "用户 CAN 发送队列发生丢包",
+        "en": "The user-space CAN transmit queue dropped packets."
+      },
+      "troubleshooting": {
+        "zh": "查看发送丢包计数和系统负载，检查发送阻塞及命令产生速率。",
+        "en": "Inspect transmit-drop counters and system load, checking for blocked transmission and excessive command production."
+      },
+      "commands": [
+        "lspci -nn -d 10ee:7022",
+        "ros2 topic echo /hardware/actuator_status --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x8081": {
+      "condition": "IMU_OPEN_FAILED",
+      "description": {
+        "zh": "串口打开失败",
+        "en": "The IMU serial port could not be opened."
+      },
+      "troubleshooting": {
+        "zh": "检查/dev/ttyIMU是否存在、设备连接与串口访问权限，并查看原始打开错误。",
+        "en": "Check that /dev/ttyIMU exists, verify the connection and serial-port permissions, and inspect the original open error."
+      },
+      "commands": [
+        "ls -l /dev/ttyIMU",
+        "ros2 topic info /hardware/imu_data --verbose"
+      ]
+    },
+    "0x8082": {
+      "condition": "IMU_READ_ERROR",
+      "description": {
+        "zh": "串口读取失败",
+        "en": "An IMU serial read failed."
+      },
+      "troubleshooting": {
+        "zh": "检查串口连接与原始read/poll错误，核对设备是否断开或被其他进程占用。",
+        "en": "Check the serial connection and original read/poll error, including disconnection or another process using the device."
+      },
+      "commands": [
+        "ls -l /dev/ttyIMU",
+        "ros2 topic info /hardware/imu_data --verbose"
+      ]
+    },
+    "0x8083": {
+      "condition": "IMU_FRAME_ERROR",
+      "description": {
+        "zh": "帧解析失败",
+        "en": "An IMU data frame could not be parsed."
+      },
+      "troubleshooting": {
+        "zh": "核对IMU协议、串口921600配置和连接质量，查看原始帧解析错误。",
+        "en": "Verify the IMU protocol, the 921600 serial configuration and connection quality, then inspect frame-parsing errors."
+      },
+      "commands": [
+        "ls -l /dev/ttyIMU",
+        "ros2 topic info /hardware/imu_data --verbose"
+      ]
+    },
+    "0x8084": {
+      "condition": "IMU_NO_DATA",
+      "description": {
+        "zh": "IMU 数据中断",
+        "en": "The required IMU data stream has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查imu_data发布端、频率和QoS；禁用硬件内置IMU读取时仍需外部节点提供example所需数据。",
+        "en": "Check the imu_data publisher, rate and QoS; disabling the built-in reader still requires an external publisher when example needs IMU data."
+      },
+      "commands": [
+        "ros2 topic info /hardware/imu_data --verbose",
+        "ros2 topic echo /hardware/imu_data --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8085": {
+      "condition": "IMU_INVALID",
+      "description": {
+        "zh": "非有限数或四元数范数异常",
+        "en": "IMU values are non-finite or the quaternion norm is invalid."
+      },
+      "troubleshooting": {
+        "zh": "检查四元数、角速度和加速度中的NaN/Inf及四元数范数，核对驱动输出。",
+        "en": "Check quaternion, angular velocity and acceleration for NaN/Inf and verify the quaternion norm against the driver output."
+      },
+      "commands": [
+        "ros2 topic info /hardware/imu_data --verbose",
+        "ros2 topic echo /hardware/imu_data --once --qos-reliability best_effort"
+      ]
+    },
+    "0xC086": {
+      "condition": "IMU_PROTECTION",
+      "description": {
+        "zh": "example 的 IMU 超时保护已锁存",
+        "en": "The existing example IMU timeout protection is latched."
+      },
+      "troubleshooting": {
+        "zh": "先检查IMU数据恢复及时间戳，再查看example保护日志；数据恢复不等于保护锁存已解除。",
+        "en": "First verify that IMU data and timestamps have recovered, then inspect example protection logs; resumed data does not itself clear the latch."
+      },
+      "commands": [
+        "ros2 topic info /hardware/imu_data --verbose",
+        "ros2 topic echo /hardware/imu_data --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8087": {
+      "condition": "IMU_STAMP_ERROR",
+      "description": {
+        "zh": "IMU 时间戳异常",
+        "en": "IMU timestamps are missing, reversed, stale or in the future."
+      },
+      "troubleshooting": {
+        "zh": "核对imu_data.header.stamp、时钟同步和use_sim_time，避免混用系统时间与仿真时间。",
+        "en": "Check imu_data.header.stamp, clock synchronization and use_sim_time; do not mix system and simulation clocks."
+      },
+      "commands": [
+        "ros2 topic info /hardware/imu_data --verbose",
+        "ros2 topic echo /hardware/imu_data --once --qos-reliability best_effort"
+      ]
+    },
+    "0x80A1": {
+      "condition": "REMOTE_NO_DATA",
+      "description": {
+        "zh": "遥控器就绪心跳中断",
+        "en": "The input-device readiness heartbeat has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查遥控器管理节点及input_ready心跳；motion_commands按变化发布，不能用其静默判断断连。",
+        "en": "Check the input-device manager and input_ready heartbeat; motion_commands is change-driven, so silence there does not establish disconnection."
+      },
+      "commands": [
+        "ros2 node list",
+        "ros2 topic echo /remote_controller/input_ready --once --qos-reliability best_effort"
+      ]
+    },
+    "0x80A2": {
+      "condition": "REMOTE_NOT_READY",
+      "description": {
+        "zh": "InputDeviceManager 没有就绪的输入设备",
+        "en": "InputDeviceManager has no ready input device."
+      },
+      "troubleshooting": {
+        "zh": "检查遥控器连接和输入设备管理日志；心跳存在但data=false表示设备未就绪。",
+        "en": "Check the controller connection and input-device manager logs; a heartbeat with data=false means the device is not ready."
+      },
+      "commands": [
+        "ros2 node list",
+        "ros2 topic echo /remote_controller/input_ready --once --qos-reliability best_effort"
+      ]
+    },
+    "0x80A3": {
+      "condition": "REMOTE_COMMAND_INVALID",
+      "description": {
+        "zh": "遥控速度、高度或角速度含非有限数",
+        "en": "Remote motion commands contain non-finite values."
+      },
+      "troubleshooting": {
+        "zh": "检查motion_commands的速度、角速度和高度是否为NaN/Inf，定位对应输入映射。",
+        "en": "Check motion_commands velocity, yaw rate and height for NaN/Inf and inspect the corresponding input mapping."
+      },
+      "commands": [
+        "ros2 topic echo /motion_commands --once --qos-reliability best_effort",
+        "ros2 topic echo /remote_controller/input_ready --once --qos-reliability best_effort"
+      ]
+    },
+    "0x40C1": {
+      "condition": "CAMERA_NO_DATA",
+      "description": {
+        "zh": "启用相机检查后未收到任何随帧元数据",
+        "en": "No camera frame metadata was received while camera checks were enabled."
+      },
+      "troubleshooting": {
+        "zh": "检查相机节点、连接和CameraInfo话题；若主动关闭全部相机，应关闭check_camera。",
+        "en": "Check camera nodes, connections and CameraInfo topics; disable check_camera when all cameras are intentionally disabled."
+      },
+      "commands": [
+        "ros2 topic list -t",
+        "ros2 node list"
+      ]
+    },
+    "0x40C2": {
+      "condition": "CAMERA_STREAM_TIMEOUT",
+      "description": {
+        "zh": "已发现的某个相机流中断",
+        "en": "A previously discovered camera metadata stream has stopped."
+      },
+      "troubleshooting": {
+        "zh": "按source定位具体CameraInfo流，检查对应发布端、频率和驱动日志；不表示已检查图像像素内容。",
+        "en": "Locate the CameraInfo stream using source and check its publisher, rate and driver logs; this does not imply image-pixel validation."
+      },
+      "commands": [
+        "ros2 topic list -t",
+        "ros2 node list"
+      ]
+    },
+    "0x40C3": {
+      "condition": "CAMERA_INFO_INVALID",
+      "description": {
+        "zh": "帧尺寸或标定元数据异常",
+        "en": "Camera frame dimensions or calibration metadata are invalid."
+      },
+      "troubleshooting": {
+        "zh": "检查source流的width/height及K、D标定数值，核对分辨率与驱动配置。",
+        "en": "Check the source stream's width/height and K/D calibration values against resolution and driver configuration."
+      },
+      "commands": [
+        "ros2 topic list -t",
+        "ros2 node list"
+      ]
+    },
+    "0x40E1": {
+      "condition": "BATTERY_NO_DATA",
+      "description": {
+        "zh": "已启用的电池话题中断",
+        "en": "The enabled battery-state stream has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查battery_states发布端和连接；仅在check_battery启用时检查，若改过battery_topic应使用实际名称。",
+        "en": "Check the battery_states publisher and connection; this check requires check_battery, and a changed battery_topic must be used."
+      },
+      "commands": [
+        "ros2 topic info /battery_states --verbose",
+        "ros2 topic echo /battery_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x40E2": {
+      "condition": "BATTERY_INVALID",
+      "description": {
+        "zh": "电压、电流或 SOC 无效",
+        "en": "Battery voltage, current or state of charge is invalid."
+      },
+      "troubleshooting": {
+        "zh": "检查voltage/current/soc是否有限、voltage是否大于0以及soc是否为0至100；不新增高低电压阈值。",
+        "en": "Check finite voltage/current/soc values, voltage greater than zero and soc within 0 to 100; no additional voltage thresholds are defined."
+      },
+      "commands": [
+        "ros2 topic info /battery_states --verbose",
+        "ros2 topic echo /battery_states --once --qos-reliability best_effort"
+      ]
+    },
+    "0x8101": {
+      "condition": "EXAMPLE_NO_DATA",
+      "description": {
+        "zh": "example 状态心跳中断",
+        "en": "The example runtime status heartbeat has stopped."
+      },
+      "troubleshooting": {
+        "zh": "检查example进程和state_machine_info话题，核对运行入口是否提供该状态。",
+        "en": "Check the example process and state_machine_info topic, and verify that the selected entry point publishes runtime status."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x8102": {
+      "condition": "EXAMPLE_STATUS_INVALID",
+      "description": {
+        "zh": "状态 JSON 或必需字段无效",
+        "en": "Example status JSON or required fields are invalid."
+      },
+      "troubleshooting": {
+        "zh": "查看robot_diagnose的解析错误与state_machine_info内容，核对control_timing.total_cycles等必需字段。",
+        "en": "Inspect robot_diagnose parsing errors and state_machine_info, including required fields such as control_timing.total_cycles."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0xC103": {
+      "condition": "CONTROL_FATAL",
+      "description": {
+        "zh": "控制线程、推理或 executor 异常",
+        "en": "The control thread, inference runtime or executor failed."
+      },
+      "troubleshooting": {
+        "zh": "先确保机械安全，查看example最早的fatal_error及异常堆栈，核对模型、输入和运行资源。",
+        "en": "Secure the mechanism first, then inspect the first example fatal_error and traceback, including model, inputs and runtime resources."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0xC104": {
+      "condition": "CONTROL_STALLED",
+      "description": {
+        "zh": "心跳仍在，但控制周期计数超过 1 秒不再推进",
+        "en": "Runtime status continues but the control cycle counter stopped for over one second."
+      },
+      "troubleshooting": {
+        "zh": "检查control_timing.total_cycles是否推进，结合线程状态与日志排查阻塞或推理停滞。",
+        "en": "Check whether control_timing.total_cycles advances, then use thread state and logs to investigate blocking or stalled inference."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x8105": {
+      "condition": "EXAMPLE_INIT_FAILED",
+      "description": {
+        "zh": "配置、模型或 runtime 初始化异常",
+        "en": "Example configuration, model or runtime initialization failed."
+      },
+      "troubleshooting": {
+        "zh": "查看example启动时首个异常，核对配置与模型路径、格式和依赖，不反复启动电机试错。",
+        "en": "Inspect the first example startup exception and verify configuration and model paths, formats and dependencies; do not repeatedly start motors to diagnose it."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x8106": {
+      "condition": "RESET_FAILED",
+      "description": {
+        "zh": "复位响应失败或 Future 异常",
+        "en": "A reset response failed or its future raised an exception."
+      },
+      "troubleshooting": {
+        "zh": "查看example复位响应和异常日志，检查robot_reset服务是否存在；未查清原因前不要反复调用复位。",
+        "en": "Inspect the example reset response and exception logs, and check that robot_reset exists; do not repeatedly reset before resolving the cause."
+      },
+      "commands": [
+        "ros2 service list -t",
+        "ros2 node list"
+      ]
+    },
+    "0x4107": {
+      "condition": "MAINTENANCE_FAILED",
+      "description": {
+        "zh": "后台 maintenance 异常",
+        "en": "The example background maintenance task reported an error."
+      },
+      "troubleshooting": {
+        "zh": "查看runtime中的maintenance_error及后台任务日志，定位失败的维护步骤。",
+        "en": "Inspect maintenance_error in runtime status and background-task logs to identify the failing maintenance step."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0xC108": {
+      "condition": "ATTITUDE_PROTECTION",
+      "description": {
+        "zh": "旧 walk 入口触发其原有 60° 姿态保护",
+        "en": "The existing walk entry point triggered its 60-degree attitude protection."
+      },
+      "troubleshooting": {
+        "zh": "先确保机械安全，核对IMU姿态、安装方向和walk日志；不通过调大角度阈值掩盖异常。",
+        "en": "Secure the mechanism first, then check IMU attitude, mounting orientation and walk logs; do not raise the angle threshold to hide the fault."
+      },
+      "commands": [
+        "ros2 topic info /hardware/imu_data --verbose",
+        "ros2 topic echo /hardware/imu_data --once --qos-reliability best_effort"
+      ]
+    },
+    "0x4121": {
+      "condition": "MOD_ERROR",
+      "description": {
+        "zh": "Mod 不可用或加载失败",
+        "en": "A Mod is unavailable or failed to load."
+      },
+      "troubleshooting": {
+        "zh": "按source的Mod id查看snapshot中的error，核对对应配置、依赖和模型资源。",
+        "en": "Use the Mod id in source to inspect its snapshot error, then check configuration, dependencies and model resources."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x4122": {
+      "condition": "MOD_WARNING",
+      "description": {
+        "zh": "Mod 报告警告",
+        "en": "A Mod reported a warning."
+      },
+      "troubleshooting": {
+        "zh": "查看对应Mod的warnings原文，根据其实际内容排查，不把警告自动当成致命错误。",
+        "en": "Read the Mod's original warnings and investigate their actual content; do not automatically treat warnings as fatal errors."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x8123": {
+      "condition": "RESOURCE_ERROR",
+      "description": {
+        "zh": "当前准备进入状态的必需资源加载失败",
+        "en": "A required resource for the state being prepared failed to load."
+      },
+      "troubleshooting": {
+        "zh": "按source的资源id查看preparing.resources中的失败原因，核对模型文件、权限及后端依赖。",
+        "en": "Use the resource id in source to inspect preparing.resources, then check model files, permissions and backend dependencies."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x8124": {
+      "condition": "NODE_ERROR",
+      "description": {
+        "zh": "Mod 子节点不可用或故障",
+        "en": "A Mod child node is unavailable or faulted."
+      },
+      "troubleshooting": {
+        "zh": "按source的子节点id查看runtime中的error、退出状态和子进程日志。",
+        "en": "Use the child-node id in source to inspect its runtime error, exit status and subprocess logs."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x4125": {
+      "condition": "NODE_RESTARTING",
+      "description": {
+        "zh": "Mod 子进程正在重启",
+        "en": "A Mod subprocess is restarting."
+      },
+      "troubleshooting": {
+        "zh": "查看子进程重启次数、退出原因及日志；持续重启时排查根因而非仅等待恢复。",
+        "en": "Inspect subprocess restart counts, exit reasons and logs; repeated restarts require investigation of the underlying cause."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ros2 node list"
+      ]
+    },
+    "0x4141": {
+      "condition": "CONTROL_BUDGET_OVERRUN",
+      "description": {
+        "zh": "控制计算超预算计数增加",
+        "en": "The control computation budget-overrun counter increased."
+      },
+      "troubleshooting": {
+        "zh": "查看control_timing新增超预算计数，结合CPU、推理耗时与后台负载分析；历史累计值本身不代表当前故障。",
+        "en": "Inspect new control_timing budget overruns against CPU load, inference duration and background work; historical totals alone are not a current fault."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x4142": {
+      "condition": "CONTROL_DEADLINE_MISS",
+      "description": {
+        "zh": "控制截止时间错过计数增加",
+        "en": "The control deadline-miss counter increased."
+      },
+      "troubleshooting": {
+        "zh": "查看control_timing新增miss和执行耗时，检查调度竞争、CPU负载及阻塞调用。",
+        "en": "Inspect new control_timing deadline misses and execution time, checking scheduler contention, CPU load and blocking calls."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    },
+    "0x4143": {
+      "condition": "CONTROL_PERIOD_SKIPPED",
+      "description": {
+        "zh": "控制周期跳过计数增加",
+        "en": "The skipped-control-period counter increased."
+      },
+      "troubleshooting": {
+        "zh": "查看control_timing新增跳周期计数与系统负载，排查执行超时及调度延迟，不直接降低控制频率。",
+        "en": "Inspect new skipped periods and system load for execution overruns and scheduling delays; do not directly reduce the control frequency."
+      },
+      "commands": [
+        "ros2 topic echo /hardware/state_machine_info --once --qos-reliability best_effort",
+        "ps -eLo pid,tid,pcpu,comm --sort=-pcpu"
+      ]
+    }
+  }
+}

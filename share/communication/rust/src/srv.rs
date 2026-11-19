@@ -318,6 +318,190 @@ impl rosidl_runtime_rs::Message for RobotReset_Response {
 }
 
 
+// Corresponds to communication__srv__ApplyExternalWrench_Request
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ApplyExternalWrench_Request {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub operation: u8,
+
+    /// Caller-provided identifier. APPLY replaces an existing command with the same
+    /// identifier; CLEAR removes it. It is ignored by CLEAR_ALL.
+    pub wrench_id: std::string::String,
+
+    /// MuJoCo body name. Required by APPLY.
+    pub body_name: std::string::String,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub reference_frame: u8,
+
+    /// If true, application_point is ignored and the wrench is applied at the body
+    /// center of mass. Otherwise, the point is interpreted in reference_frame.
+    pub at_center_of_mass: bool,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub application_point: geometry_msgs::msg::Point,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub wrench: geometry_msgs::msg::Wrench,
+
+    /// A persistent wrench remains active until CLEAR, CLEAR_ALL, reset, or model
+    /// reload. For a non-persistent wrench, zero duration means one simulation step.
+    pub persistent: bool,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub duration: builtin_interfaces::msg::Duration,
+
+}
+
+impl ApplyExternalWrench_Request {
+
+    // This constant is not documented.
+    #[allow(missing_docs)]
+    pub const APPLY: u8 = 0;
+
+
+    // This constant is not documented.
+    #[allow(missing_docs)]
+    pub const CLEAR: u8 = 1;
+
+
+    // This constant is not documented.
+    #[allow(missing_docs)]
+    pub const CLEAR_ALL: u8 = 2;
+
+    /// The frame in which wrench and application_point are expressed.
+    pub const WORLD_FRAME: u8 = 0;
+
+
+    // This constant is not documented.
+    #[allow(missing_docs)]
+    pub const BODY_FRAME: u8 = 1;
+
+}
+
+
+impl Default for ApplyExternalWrench_Request {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::srv::rmw::ApplyExternalWrench_Request::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for ApplyExternalWrench_Request {
+  type RmwMsg = super::srv::rmw::ApplyExternalWrench_Request;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        operation: msg.operation,
+        wrench_id: msg.wrench_id.as_str().into(),
+        body_name: msg.body_name.as_str().into(),
+        reference_frame: msg.reference_frame,
+        at_center_of_mass: msg.at_center_of_mass,
+        application_point: geometry_msgs::msg::Point::into_rmw_message(std::borrow::Cow::Owned(msg.application_point)).into_owned(),
+        wrench: geometry_msgs::msg::Wrench::into_rmw_message(std::borrow::Cow::Owned(msg.wrench)).into_owned(),
+        persistent: msg.persistent,
+        duration: builtin_interfaces::msg::Duration::into_rmw_message(std::borrow::Cow::Owned(msg.duration)).into_owned(),
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+      operation: msg.operation,
+        wrench_id: msg.wrench_id.as_str().into(),
+        body_name: msg.body_name.as_str().into(),
+      reference_frame: msg.reference_frame,
+      at_center_of_mass: msg.at_center_of_mass,
+        application_point: geometry_msgs::msg::Point::into_rmw_message(std::borrow::Cow::Borrowed(&msg.application_point)).into_owned(),
+        wrench: geometry_msgs::msg::Wrench::into_rmw_message(std::borrow::Cow::Borrowed(&msg.wrench)).into_owned(),
+      persistent: msg.persistent,
+        duration: builtin_interfaces::msg::Duration::into_rmw_message(std::borrow::Cow::Borrowed(&msg.duration)).into_owned(),
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      operation: msg.operation,
+      wrench_id: msg.wrench_id.to_string(),
+      body_name: msg.body_name.to_string(),
+      reference_frame: msg.reference_frame,
+      at_center_of_mass: msg.at_center_of_mass,
+      application_point: geometry_msgs::msg::Point::from_rmw_message(msg.application_point),
+      wrench: geometry_msgs::msg::Wrench::from_rmw_message(msg.wrench),
+      persistent: msg.persistent,
+      duration: builtin_interfaces::msg::Duration::from_rmw_message(msg.duration),
+    }
+  }
+}
+
+
+// Corresponds to communication__srv__ApplyExternalWrench_Response
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct ApplyExternalWrench_Response {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub success: bool,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub message: std::string::String,
+
+}
+
+
+
+impl Default for ApplyExternalWrench_Response {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::srv::rmw::ApplyExternalWrench_Response::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for ApplyExternalWrench_Response {
+  type RmwMsg = super::srv::rmw::ApplyExternalWrench_Response;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        success: msg.success,
+        message: msg.message.as_str().into(),
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+      success: msg.success,
+        message: msg.message.as_str().into(),
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      success: msg.success,
+      message: msg.message.to_string(),
+    }
+  }
+}
+
+
 
 
 
@@ -382,6 +566,28 @@ impl rosidl_runtime_rs::Service for RobotReset {
     fn get_type_support() -> *const std::ffi::c_void {
         // SAFETY: No preconditions for this function.
         unsafe { rosidl_typesupport_c__get_service_type_support_handle__communication__srv__RobotReset() }
+    }
+}
+
+
+
+
+#[link(name = "communication__rosidl_typesupport_c")]
+extern "C" {
+    fn rosidl_typesupport_c__get_service_type_support_handle__communication__srv__ApplyExternalWrench() -> *const std::ffi::c_void;
+}
+
+// Corresponds to communication__srv__ApplyExternalWrench
+#[allow(missing_docs, non_camel_case_types)]
+pub struct ApplyExternalWrench;
+
+impl rosidl_runtime_rs::Service for ApplyExternalWrench {
+    type Request = ApplyExternalWrench_Request;
+    type Response = ApplyExternalWrench_Response;
+
+    fn get_type_support() -> *const std::ffi::c_void {
+        // SAFETY: No preconditions for this function.
+        unsafe { rosidl_typesupport_c__get_service_type_support_handle__communication__srv__ApplyExternalWrench() }
     }
 }
 

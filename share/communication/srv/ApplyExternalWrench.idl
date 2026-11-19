@@ -1,0 +1,61 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from communication/srv/ApplyExternalWrench.srv
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Duration.idl"
+#include "geometry_msgs/msg/Point.idl"
+#include "geometry_msgs/msg/Wrench.idl"
+
+module communication {
+  module srv {
+    module ApplyExternalWrench_Request_Constants {
+      const uint8 APPLY = 0;
+      const uint8 CLEAR = 1;
+      const uint8 CLEAR_ALL = 2;
+      @verbatim (language="comment", text=
+        "The frame in which wrench and application_point are expressed.")
+      const uint8 WORLD_FRAME = 0;
+      const uint8 BODY_FRAME = 1;
+    };
+    @verbatim (language="comment", text=
+      "Command operations.")
+    struct ApplyExternalWrench_Request {
+      uint8 operation;
+
+      @verbatim (language="comment", text=
+        "Caller-provided identifier. APPLY replaces an existing command with the same" "\n"
+        "identifier; CLEAR removes it. It is ignored by CLEAR_ALL.")
+      string wrench_id;
+
+      @verbatim (language="comment", text=
+        "MuJoCo body name. Required by APPLY.")
+      string body_name;
+
+      uint8 reference_frame;
+
+      @verbatim (language="comment", text=
+        "If true, application_point is ignored and the wrench is applied at the body" "\n"
+        "center of mass. Otherwise, the point is interpreted in reference_frame.")
+      boolean at_center_of_mass;
+
+      geometry_msgs::msg::Point application_point;
+
+      geometry_msgs::msg::Wrench wrench;
+
+      @verbatim (language="comment", text=
+        "A persistent wrench remains active until CLEAR, CLEAR_ALL, reset, or model" "\n"
+        "reload. For a non-persistent wrench, zero duration means one simulation step.")
+      boolean persistent;
+
+      builtin_interfaces::msg::Duration duration;
+    };
+    @verbatim (language="comment", text=
+      "Success means that the command was validated and queued. APPLY takes effect" "\n"
+      "on the next simulation step.")
+    struct ApplyExternalWrench_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};
