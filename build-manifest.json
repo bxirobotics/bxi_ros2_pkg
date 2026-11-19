@@ -9,12 +9,20 @@
   },
   "sources": {
     "bxi_pci_drv": {
-      "commit": "a4c0ea1c11564d57831ffe424ae11e68f91ee66f",
-      "dirty": true
+      "commit": "714cbbf3e6dafa88e0bc3ccc96f5b3d203562ab1",
+      "dirty": false,
+      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "bxi_ros2_pkg_src": {
-      "commit": "f3aef6ba219d82fd9bfbede25516535a163d7830",
-      "dirty": true
+      "commit": "8ef0e11266ff8da8b12b87ad1ee57e494d061e01",
+      "dirty": false,
+      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
+  },
+  "toolchain": {
+    "compiler_target": "x86_64-linux-gnu",
+    "gcc": "11.4.0",
+    "cmake": "cmake version 3.22.1",
+    "ros": "humble"
   }
 }
