@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from communication/msg/ActuatorStatus.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module communication {
+  module msg {
+    struct ActuatorStatus {
+      std_msgs::msg::Header header;
+
+      sequence<string> name;
+
+      @verbatim (language="comment", text=
+        "One status per name; values are defined in communication/actuator_status.hpp." "\n"
+        "0 OK, 1 DISABLED, 2 FEEDBACK_TIMEOUT, 3 COMMAND_TIMEOUT," "\n"
+        "4 ERROR_OVER_POSITION, 5 ERROR_OVER_VELOCITY, 6 ERROR_OVER_TORQUE," "\n"
+        "7 ERROR_SAFE_MODE, 8 CAN_RX_DROP, 9 CAN_TX_ERROR, 10 ERROR_LATCHED," "\n"
+        "255 ERROR_UNKNOWN. If multiple conditions apply, only the highest priority is sent.")
+      sequence<uint8> status;
+    };
+  };
+};

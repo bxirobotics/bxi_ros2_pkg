@@ -1,0 +1,20 @@
+{
+  "architecture": "x86",
+  "prebuilt": {
+    "commit": "7e5e9cef12f013413875bb8e8f6470c67b53708c",
+    "files": {
+      "lib/hardware_elf3/can_test": "943f2350633f85438b5fbfe402b50912794802fd9bf01e55612b49c1d6704d60",
+      "lib/mujoco/lib/libmujoco.so.3.5.0": "3c393b5c8305a0cbc9c2a9e356fdcf54cb47e5c7f571b0fb6678d33520d673cf"
+    }
+  },
+  "sources": {
+    "bxi_pci_drv": {
+      "commit": "a4c0ea1c11564d57831ffe424ae11e68f91ee66f",
+      "dirty": true
+    },
+    "bxi_ros2_pkg_src": {
+      "commit": "f3aef6ba219d82fd9bfbede25516535a163d7830",
+      "dirty": true
+    }
+  }
+}

@@ -2,12 +2,16 @@ msg/ActuatorCmds.idl
 msg/ActuatorCmds.msg
 msg/ActuatorStates.idl
 msg/ActuatorStates.msg
+msg/ActuatorStatus.idl
+msg/ActuatorStatus.msg
 msg/BatteryStates.idl
 msg/BatteryStates.msg
 msg/CANFD.idl
 msg/CANFD.msg
 msg/CANFDPacket.idl
 msg/CANFDPacket.msg
+msg/DiagnosticEvent.idl
+msg/DiagnosticEvent.msg
 msg/MotionCommands.idl
 msg/MotionCommands.msg
 msg/StateEstimator.idl

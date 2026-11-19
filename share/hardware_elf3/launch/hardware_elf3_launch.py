@@ -10,6 +10,8 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            Node(package="hardware_elf3", executable="robot_diagnose.py",
+                 name="robot_diagnose", output="screen"),
             Node(
                 package="hardware_elf3",
                 executable="hardware_elf3",
