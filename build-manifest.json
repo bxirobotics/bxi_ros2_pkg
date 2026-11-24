@@ -9,14 +9,14 @@
   },
   "sources": {
     "bxi_pci_drv": {
-      "commit": "714cbbf3e6dafa88e0bc3ccc96f5b3d203562ab1",
+      "commit": "f376883cf38b3ba3b3c63777dc7dde52038b95bd",
       "dirty": false,
       "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "bxi_ros2_pkg_src": {
       "commit": "8ef0e11266ff8da8b12b87ad1ee57e494d061e01",
-      "dirty": false,
-      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "dirty": true,
+      "changes_sha256": "9232c21d29ace80050c7532e189da10d86373f007372591f9a076689161524fd"
     }
   },
   "toolchain": {
