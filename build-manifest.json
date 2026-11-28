@@ -18,7 +18,7 @@
       }
     },
     "bxi_ros2_pkg_src": {
-      "commit": "025e825bdb340498f32647a5772d2d8747879d89",
+      "commit": "38e6676cd2bf1715acf3cf2feb6a974ceac74b1f",
       "dirty": false,
       "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
