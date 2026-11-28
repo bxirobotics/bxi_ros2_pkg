@@ -12,8 +12,8 @@ set_target_properties(communication::communication__rosidl_generator_c PROPERTIE
   IMPORTED_SONAME_RELEASE "libcommunication__rosidl_generator_c.so"
   )
 
-list(APPEND _IMPORT_CHECK_TARGETS communication::communication__rosidl_generator_c )
-list(APPEND _IMPORT_CHECK_FILES_FOR_communication::communication__rosidl_generator_c "${_IMPORT_PREFIX}/lib/libcommunication__rosidl_generator_c.so" )
+list(APPEND _cmake_import_check_targets communication::communication__rosidl_generator_c )
+list(APPEND _cmake_import_check_files_for_communication::communication__rosidl_generator_c "${_IMPORT_PREFIX}/lib/libcommunication__rosidl_generator_c.so" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)
