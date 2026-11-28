@@ -14,28 +14,33 @@ if(NOT _exported_typesupport_libraries STREQUAL "")
 
     if(NOT IS_ABSOLUTE "${_library}")
       # search for library target relative to this CMake file
-      set(_lib "NOTFOUND")
+      unset(_communication_exported_typesupport_library)
+      unset(_communication_exported_typesupport_library CACHE)
       find_library(
-        _lib NAMES "${_library}"
+        _communication_exported_typesupport_library NAMES "${_library}"
         PATHS "${communication_DIR}/../../../lib"
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH
       )
 
-      if(NOT _lib)
+      if(NOT _communication_exported_typesupport_library)
         # the library wasn't found
         message(FATAL_ERROR
           "Package 'communication' exports the typesupport library '${_library}' which couldn't be found")
-      elseif(NOT IS_ABSOLUTE "${_lib}")
+      elseif(NOT IS_ABSOLUTE "${_communication_exported_typesupport_library}")
         # the found library must be an absolute path
         message(FATAL_ERROR
-          "Package 'communication' found the typesupport library '${_library}' at '${_lib}' "
+          "Package 'communication' found the typesupport library '${_library}' at '${_communication_exported_typesupport_library}' "
           "which is not an absolute path")
-      elseif(NOT EXISTS "${_lib}")
+      elseif(NOT EXISTS "${_communication_exported_typesupport_library}")
         # the found library must exist
-        message(FATAL_ERROR "Package 'communication' found the typesupport library '${_lib}' which doesn't exist")
+        message(FATAL_ERROR
+          "Package 'communication' found the typesupport library '${_communication_exported_typesupport_library}' which doesn't exist")
       else()
-        list(APPEND communication_LIBRARIES${_suffix} ${_cfg} "${_lib}")
+        list(APPEND communication_LIBRARIES${_suffix} ${_cfg} "${_communication_exported_typesupport_library}")
       endif()
+
+      unset(_communication_exported_typesupport_library)
+      unset(_communication_exported_typesupport_library CACHE)
 
     else()
       if(NOT EXISTS "${_library}")

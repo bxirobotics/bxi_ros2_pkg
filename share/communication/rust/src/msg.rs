@@ -67,11 +67,11 @@ impl rosidl_runtime_rs::Message for ActuatorCmds {
           .into_iter()
           .map(|elem| elem.as_str().into())
           .collect(),
-        kp: msg.kp.into(),
-        pos: msg.pos.into(),
-        kd: msg.kd.into(),
-        vel: msg.vel.into(),
-        torque: msg.torque.into(),
+        kp: msg.kp.as_slice().into(),
+        pos: msg.pos.as_slice().into(),
+        kd: msg.kd.as_slice().into(),
+        vel: msg.vel.as_slice().into(),
+        torque: msg.torque.as_slice().into(),
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
@@ -95,21 +95,11 @@ impl rosidl_runtime_rs::Message for ActuatorCmds {
           .into_iter()
           .map(|elem| elem.to_string())
           .collect(),
-      kp: msg.kp
-          .into_iter()
-          .collect(),
-      pos: msg.pos
-          .into_iter()
-          .collect(),
-      kd: msg.kd
-          .into_iter()
-          .collect(),
-      vel: msg.vel
-          .into_iter()
-          .collect(),
-      torque: msg.torque
-          .into_iter()
-          .collect(),
+      kp: msg.kp.into(),
+      pos: msg.pos.into(),
+      kd: msg.kd.into(),
+      vel: msg.vel.into(),
+      torque: msg.torque.into(),
     }
   }
 }
@@ -179,11 +169,11 @@ impl rosidl_runtime_rs::Message for ActuatorStates {
           .into_iter()
           .map(|elem| elem.as_str().into())
           .collect(),
-        position: msg.position.into(),
-        velocity: msg.velocity.into(),
-        effort: msg.effort.into(),
-        driver_temperature: msg.driver_temperature.into(),
-        motor_temperature: msg.motor_temperature.into(),
+        position: msg.position.as_slice().into(),
+        velocity: msg.velocity.as_slice().into(),
+        effort: msg.effort.as_slice().into(),
+        driver_temperature: msg.driver_temperature.as_slice().into(),
+        motor_temperature: msg.motor_temperature.as_slice().into(),
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
@@ -207,21 +197,11 @@ impl rosidl_runtime_rs::Message for ActuatorStates {
           .into_iter()
           .map(|elem| elem.to_string())
           .collect(),
-      position: msg.position
-          .into_iter()
-          .collect(),
-      velocity: msg.velocity
-          .into_iter()
-          .collect(),
-      effort: msg.effort
-          .into_iter()
-          .collect(),
-      driver_temperature: msg.driver_temperature
-          .into_iter()
-          .collect(),
-      motor_temperature: msg.motor_temperature
-          .into_iter()
-          .collect(),
+      position: msg.position.into(),
+      velocity: msg.velocity.into(),
+      effort: msg.effort.into(),
+      driver_temperature: msg.driver_temperature.into(),
+      motor_temperature: msg.motor_temperature.into(),
     }
   }
 }
@@ -273,7 +253,7 @@ impl rosidl_runtime_rs::Message for ActuatorStatus {
           .into_iter()
           .map(|elem| elem.as_str().into())
           .collect(),
-        status: msg.status.into(),
+        status: msg.status.as_slice().into(),
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
@@ -293,9 +273,7 @@ impl rosidl_runtime_rs::Message for ActuatorStatus {
           .into_iter()
           .map(|elem| elem.to_string())
           .collect(),
-      status: msg.status
-          .into_iter()
-          .collect(),
+      status: msg.status.into(),
     }
   }
 }
@@ -715,7 +693,7 @@ impl rosidl_runtime_rs::Message for TouchSensor {
     match msg_cow {
       std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Owned(msg.header)).into_owned(),
-        value: msg.value.into(),
+        value: msg.value.as_slice().into(),
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
@@ -727,9 +705,7 @@ impl rosidl_runtime_rs::Message for TouchSensor {
   fn from_rmw_message(msg: Self::RmwMsg) -> Self {
     Self {
       header: std_msgs::msg::Header::from_rmw_message(msg.header),
-      value: msg.value
-          .into_iter()
-          .collect(),
+      value: msg.value.into(),
     }
   }
 }
@@ -775,8 +751,8 @@ impl rosidl_runtime_rs::Message for StateEstimator {
     match msg_cow {
       std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Owned(msg.header)).into_owned(),
-        qpos: msg.qpos.into(),
-        qvel: msg.qvel.into(),
+        qpos: msg.qpos.as_slice().into(),
+        qvel: msg.qvel.as_slice().into(),
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         header: std_msgs::msg::Header::into_rmw_message(std::borrow::Cow::Borrowed(&msg.header)).into_owned(),
@@ -789,12 +765,8 @@ impl rosidl_runtime_rs::Message for StateEstimator {
   fn from_rmw_message(msg: Self::RmwMsg) -> Self {
     Self {
       header: std_msgs::msg::Header::from_rmw_message(msg.header),
-      qpos: msg.qpos
-          .into_iter()
-          .collect(),
-      qvel: msg.qvel
-          .into_iter()
-          .collect(),
+      qpos: msg.qpos.into(),
+      qvel: msg.qvel.into(),
     }
   }
 }

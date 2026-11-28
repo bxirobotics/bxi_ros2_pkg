@@ -9,12 +9,16 @@
   },
   "sources": {
     "bxi_pci_drv": {
-      "commit": "714cbbf3e6dafa88e0bc3ccc96f5b3d203562ab1",
+      "commit": "f376883cf38b3ba3b3c63777dc7dde52038b95bd",
       "dirty": false,
-      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "files": {
+        "lib/bxi_pci_drv.h": "ba19a5dca54c84748777f70a813c92499e2c214da3da9a1835151c83caee5f2f",
+        "lib/libbxi_pci_drv_arm.a": "daac39670682c324193e52417cea8ad3aa24d6df9e88a1a37a2fd278d65291c9"
+      }
     },
     "bxi_ros2_pkg_src": {
-      "commit": "8ef0e11266ff8da8b12b87ad1ee57e494d061e01",
+      "commit": "025e825bdb340498f32647a5772d2d8747879d89",
       "dirty": false,
       "changes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
@@ -22,7 +26,7 @@
   "toolchain": {
     "compiler_target": "aarch64-linux-gnu",
     "gcc": "11.4.0",
-    "cmake": "cmake version 3.22.1",
+    "cmake": "cmake version 3.31.6",
     "ros": "humble"
   }
 }
